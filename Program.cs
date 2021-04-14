@@ -17,6 +17,18 @@ namespace AllCardsOnDeck4CS
                     listOfCards.Add($"{cardValue[index]} of {suit[j]}");
             };
 
+            var sizeOfDeck = listOfCards.Count;
+            for (var endOfDeck = sizeOfDeck - 1; endOfDeck >= 0; endOfDeck--)
+            {
+                // added Fisher-Yates shuffle
+                var randomNumberForDeck = new Random().Next(0, sizeOfDeck);
+                var randomCardWithinDeck = listOfCards[randomNumberForDeck];
+                listOfCards[randomNumberForDeck] = listOfCards[endOfDeck];
+                listOfCards[endOfDeck] = randomCardWithinDeck;
+            }
+            // display shuffled cards in console
+            Console.WriteLine(listOfCards[0]);
+            Console.WriteLine(listOfCards[1]);
 
         }
     }
